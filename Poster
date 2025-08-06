@@ -1,0 +1,20 @@
+from PIL import Image, ImageEnhance
+
+# Load your two images
+profile_img = Image.open("image1.jpg")       # Replace with your actual filename
+character_img = Image.open("image2.jpg")     # Replace with your actual filename
+
+# Enhance image function
+def enhance_image(img):
+    img = ImageEnhance.Color(img).enhance(1.5)       # Boost color
+    img = ImageEnhance.Contrast(img).enhance(1.3)    # Boost contrast
+    img = ImageEnhance.Sharpness(img).enhance(2.0)   # Boost sharpness
+    return img
+
+# Apply enhancements
+enhanced_profile = enhance_image(profile_img)
+enhanced_character = enhance_image(character_img)
+
+# Combine both vertically
+final_width = max(enhanced_profile.width, enhanced_character.width)
+final_height = enhanced_profile.height + enhanced
